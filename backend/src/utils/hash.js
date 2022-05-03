@@ -33,12 +33,17 @@ function imageBufferToBase64(imgBuffer, mimeType) {
     return "data:" + mimeType + ";base64," + imgBuffer.toString('base64')
 }
 
+function genereteRandomSixDigitCode() {
+    return Math.random().toString().slice(2, 8)
+}
+
 module.exports = {
     hash,
     createRandomSalt,
     createPasswordHash,
     createToken,
-    imageBufferToBase64
+    imageBufferToBase64,
+    genereteRandomSixDigitCode
 }
 
 // Rainbow Table: Hash <--> Passwort <--> Hash Algo
