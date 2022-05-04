@@ -5,6 +5,7 @@ const { body } = require('express-validator');
 
 const { UserService } = require("./use-cases");
 const { doValidations } = require("./facade/doValidations");
+const { doAuthMiddleware } = require("./auth/doAuthMiddleware");
 
 const PORT = process.env.PORT || 9000
 const app = express()
@@ -20,7 +21,7 @@ app.get("/", (req, res) => {
 })
 
 // Authentication Required!!! 
-app.get("/api/users/all", async (_, res) => {
+app.get("/api/users/all", doAuthMiddleware, async (_, res) => {
     try {
         const allUsers = await UserService.listAllUsers()
         res.status(200).json(allUsers)
