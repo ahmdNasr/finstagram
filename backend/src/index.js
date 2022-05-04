@@ -47,6 +47,21 @@ app.post("/api/users/login",
     }
 )
 
+app.post("/api/users/refreshtoken",
+    body("refreshToken").isLength({ min: 10 }),
+    doValidations,
+    async (req, res) => {
+        try {
+            const result = await UserService.refreshUserToken({
+                refreshToken: req.body.refreshToken,
+            })
+            res.status(200).json(result)
+        } catch(err) {
+            res.status(500).json({ err: { message: err.message } })
+        }
+    }
+)
+
 app.post("/api/users/register",
     // facade layer
     body("username").isLength({ min: 1, max: 25 }),
