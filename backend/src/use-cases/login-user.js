@@ -16,6 +16,10 @@ async function loginUser({ username, password }) {
         throw new Error("There was a problem logging in.")
     }
 
+    if(!user.emailVerified) {
+        throw new Error("Please verify your E-Mail with the 6-digit-code we sent you.")
+    }
+
     const TEN_MINUTES = 60 * 10
     const token = createToken(user, "access", TEN_MINUTES)
 
