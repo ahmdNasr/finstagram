@@ -1,7 +1,7 @@
 const express = require("express")
 const cors = require("cors")
 const morgan = require("morgan")
-const { body, validationResult } = require('express-validator');
+const { body } = require('express-validator');
 
 const { UserService } = require("./use-cases");
 const { doValidations } = require("./facade/doValidations");
@@ -29,6 +29,23 @@ app.get("/api/users/all", async (_, res) => {
         res.status(500).json({ err: { message: err.message } })
     }
 })
+
+app.post("/api/users/login",
+    body("username").isLength({ min: 1 }),
+    body("password").isStrongPassword(),
+    doValidations,
+    async (req, res) => {
+        try {
+            const result = await UserService.loginUser({
+                username: req.body.username,
+                password: req.body.password
+            })
+            res.status(200).json(result)
+        } catch(err) {
+            res.status(500).json({ err: { message: err.message } })
+        }
+    }
+)
 
 app.post("/api/users/register",
     // facade layer

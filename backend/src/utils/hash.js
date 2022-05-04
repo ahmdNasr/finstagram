@@ -13,14 +13,13 @@ function createPasswordHash(password, salt) {
     return hash(password + salt)
 }
 
-function createToken(user) {
-    const TEN_MINUTES = 60 * 10 // 60seconds x 10
+function createToken(user, type = "access", lifespanInSeconds = 60 * 10) {
     const initiatedAt = Math.floor(Date.now() / 1000)
-    const expiresAt = initiatedAt + TEN_MINUTES
+    const expiresAt = initiatedAt + lifespanInSeconds // 10 minuten, 11 mintunten, 24h 
 
     const tokenPayload = {
         sub: user._id, // subjekt
-        tokenType: "access",
+        type: type, // eg: "access" token vs. "refresh" token
         iat: initiatedAt, // initiaed at in seconds
         exp: expiresAt    // expires
     }
