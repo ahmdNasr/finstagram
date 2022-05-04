@@ -4,15 +4,18 @@ function doAuthMiddleware(req, res, next) {
     const _pleaseLoginFirst = () => res.status(401).json({ message: "Please login first." })
     
     const tokenField = req.headers.token
+    if(!tokenField) {
+        return _pleaseLoginFirst()
+    }
+
     const tokenFieldParts = tokenField.split(" ")
+    const token = tokenFieldParts[1]
 
     const isJwtToken = tokenFieldParts[0] === "JWT"
     if(!isJwtToken) {
         return _pleaseLoginFirst()
     }
 
-    const token = tokenFieldParts[1]
-    
     const noTokenProvided = !token
     if(noTokenProvided) {
         return _pleaseLoginFirst()

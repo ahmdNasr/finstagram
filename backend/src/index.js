@@ -1,11 +1,9 @@
 const express = require("express")
 const cors = require("cors")
 const morgan = require("morgan")
-const { body } = require('express-validator');
 
-const { UserService } = require("./use-cases");
-const { doValidations } = require("./facade/doValidations");
-const { doAuthMiddleware } = require("./auth/doAuthMiddleware");
+const { userRouter } = require("./routes/user-routes");
+const { postsRouter } = require("./routes/posts-router");
 
 const PORT = process.env.PORT || 9000
 const app = express()
@@ -20,86 +18,8 @@ app.get("/", (req, res) => {
     res.send("it works :)")
 })
 
-// Authentication Required!!! 
-app.get("/api/users/all", doAuthMiddleware, async (_, res) => {
-    try {
-        const allUsers = await UserService.listAllUsers()
-        res.status(200).json(allUsers)
-    } catch (err) {
-        console.log(err)
-        res.status(500).json({ err: { message: err.message } })
-    }
-})
-
-app.post("/api/users/login",
-    body("username").isLength({ min: 1 }),
-    body("password").isStrongPassword(),
-    doValidations,
-    async (req, res) => {
-        try {
-            const result = await UserService.loginUser({
-                username: req.body.username,
-                password: req.body.password
-            })
-            res.status(200).json(result)
-        } catch(err) {
-            res.status(500).json({ err: { message: err.message } })
-        }
-    }
-)
-
-app.post("/api/users/refreshtoken",
-    body("refreshToken").isLength({ min: 10 }),
-    doValidations,
-    async (req, res) => {
-        try {
-            const result = await UserService.refreshUserToken({
-                refreshToken: req.body.refreshToken,
-            })
-            res.status(200).json(result)
-        } catch(err) {
-            res.status(500).json({ err: { message: err.message } })
-        }
-    }
-)
-
-app.post("/api/users/register",
-    // facade layer
-    body("username").isLength({ min: 1, max: 25 }),
-    body("email").isEmail(),
-    body("password").isStrongPassword(),
-    doValidations,
-    async (req, res) => {
-        try {
-            const userInfo = req.body
-            const result = await UserService.registerUser(userInfo)
-
-            res.status(201).json(result) // 201 ==> 'Created'
-        } catch (err) {
-            console.log(err)
-            res.status(500).json({ err: { message: err.message } })
-        }
-    }
-)
-
-app.post("/api/users/verifyEmail", 
-    // facade layer
-    body("email").isEmail(),
-    body("sixDigitCode").isLength({ min: 6 }),
-    doValidations,
-    async (req, res) => {
-        try {
-            const email = req.body.email
-            const sixDigitCode = req.body.sixDigitCode
-            const result = await UserService.verifyUserEmail({ email, sixDigitCode })
-
-            res.status(200).json(result)
-        } catch (err) {
-            console.log(err)
-            res.status(500).json({ err: { message: err.message } })
-        }
-    }
-)
+app.use("/api/users", userRouter) // alle users routes
+app.use("/api/posts", postsRouter) // alle posts routes
 
 app.listen(PORT, () => console.log("Server ready at", PORT))
 

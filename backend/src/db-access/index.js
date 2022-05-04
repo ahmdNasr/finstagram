@@ -1,4 +1,5 @@
 const UserDAO = require("./users-dao")
+const PostsDAO = require("./posts-dao")
 
 
 /*
@@ -12,5 +13,6 @@ user-dao.js                         db-access/         use-cases...
 */
 
 module.exports = {
-    UserDAO
+    UserDAO,
+    PostsDAO
 }
