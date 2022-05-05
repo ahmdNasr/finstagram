@@ -1,10 +1,8 @@
 @font-face {
   font-family: 'Billabong';
   src: url(../assets/fonts/Billabong400.ttf);
-  /* other formats include: 'woff2', 'truetype, 'opentype',
-                            'embedded-opentype', and 'svg' */
 }
-
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
 .App {
   text-align: center;
 }
