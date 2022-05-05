@@ -1,6 +1,6 @@
 import RegisterForm from "./RegisterForm";
-import logo from '../assets/img/Finstagram-logo-color.png'
-import FormPage from "../Components/FormPage";
+import logo from '../../assets/img/Finstagram-logo-color.png'
+import FormPage from "../../Components/FormPage";
 
 const Registration = () => {
     return (

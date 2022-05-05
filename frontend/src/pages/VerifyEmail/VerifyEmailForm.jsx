@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { apiBaseUrl } from "../api/api";
+import { apiBaseUrl } from "../../api/api";
 
 const VerifyEmailForm = (props) => {
   const [email, setEmail] = useState("")

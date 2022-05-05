@@ -1,7 +1,7 @@
-import './App.css';
-import logo from '../assets/img/Finstagram-logo-color.png'
+import '../App.css';
+import logo from '../../assets/img/Finstagram-logo-color.png'
 import VerifyEmailForm from './VerifyEmailForm';
-import FormPage from '../Components/FormPage';
+import FormPage from '../../Components/FormPage';
 import { useState } from 'react';
 
 function VerifyEmail() {

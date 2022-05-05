@@ -1,7 +1,7 @@
-import './App.css';
-import logo from '../assets/img/Finstagram-logo-color.png'
+import '../App.css';
+import logo from '../../assets/img/Finstagram-logo-color.png'
 import LoginForm from './LoginForm';
-import FormPage from '../Components/FormPage';
+import FormPage from '../../Components/FormPage';
 
 function Login() {
   return (

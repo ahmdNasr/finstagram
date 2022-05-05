@@ -1,6 +1,6 @@
-import './App.css';
-import Navigation from "../Components/Navigation";
-import PostList from '../Components/PostList';
+import '../App.css';
+import Navigation from "../../Components/Navigation";
+import PostList from '../../Components/PostList';
 
 const Home = () => {
     return (
