@@ -61,9 +61,6 @@ const RegisterForm = () => {
         <button onClick={doRegistration} className="w-100 mb-2 btn btn-lg rounded-4 btn-dark" type="submit">Weiter</button>
         {error && <p className="text-danger">{error}</p>}
       </form>
-      <Link to='/'>
-        <button className="w-100 mb-2 btn btn-lg rounded-4 btn-secondary fs-6" type="btn">Du hast ein Konto? Einloggen</button>
-      </Link>
     </div>
   );
 }

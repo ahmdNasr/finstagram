@@ -46,12 +46,12 @@ const LoginForm = (props) => {
           <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" className="form-control rounded-4" id="floatingPassword" placeholder="Password" autoComplete="off" />
           <label htmlFor="floatingPassword">Password</label>
         </div>
-        <button onClick={loginUser} className="w-100 mb-2 btn btn-lg rounded-4 btn-dark" type="submit">Login</button>
+        <button onClick={loginUser} className="w-100 mb-3 btn btn-lg rounded-4 btn-dark" type="submit">Anmelden</button>
         {error && <p className="text-danger">{error}</p>}
       </form>
-      <Link to={'/signup'}>
-        <button className="w-100 mb-2 btn btn-lg rounded-4 btn-secondary fs-6" type="btn">Du hast kein Konto? Registrieren</button>
-      </Link>
+      <small>
+        <Link to="/passwort/reset" className="text-decoration-none text-dark">Passwort vergessen?</Link>
+      </small>
     </div>
   );
 }

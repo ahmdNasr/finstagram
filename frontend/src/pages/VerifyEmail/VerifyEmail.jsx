@@ -14,8 +14,8 @@ function VerifyEmail() {
   }
 
   return (
-    <FormPage sideImgSrc="https://www.instagram.com/static/images/homepage/screenshots/screenshot4-2x.png/8e9224a71939.png">
-      <div className="w-75" role="document">
+    <FormPage sideImgSrc="https://www.instagram.com/static/images/homepage/screenshots/screenshot1-2x.png/cfd999368de3.png">
+      <div className="w-75 mx-auto" role="document">
         <div className="modal-content rounded-5 shadow">
           <div className="p-5 pb-4 border-bottom-0">
             <img src={logo} alt="" className='w-25'/>
