@@ -3,7 +3,7 @@ import logo from '../assets/img/Finstagram-logo-color.png'
 
 const Registration = () => {
     return (
-        <div className="App bg-dark">
+      <div className="App bg-dark">
       <div className="container">
         <div className="row d-flex align-items-center justify-content-center">
             <div className="col-6">
