@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Billabong';
+  src: url(../assets/fonts/Billabong400.ttf);
+  /* other formats include: 'woff2', 'truetype, 'opentype',
+                            'embedded-opentype', and 'svg' */
+}
+
+.App {
+  text-align: center;
+}
+
+.logo{
+  font-family: 'Billabong';
+  font-size: 5em;
+}
