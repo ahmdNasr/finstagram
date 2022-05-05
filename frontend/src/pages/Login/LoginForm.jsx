@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { apiBaseUrl } from "../../api/api";
 
 const LoginForm = (props) => {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
+  const [username, setUsername] = useState("WaldiTea")
+  const [password, setPassword] = useState("Brille123!")
 
   const [error, setError] = useState("")
   const loginUser = (event) => {
@@ -15,6 +15,7 @@ const LoginForm = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include", // damit er die http only secure cookies sicher abspreichert im browser!
       body: JSON.stringify({ username, password })
     })
     .then(response => response.json())

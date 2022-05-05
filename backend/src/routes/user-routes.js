@@ -30,6 +30,12 @@ userRouter.post("/login",
                 username: req.body.username,
                 password: req.body.password
             })
+
+            if(result.refreshToken) {
+                // result.refreshToken vom login in den session http only  cookie speichern
+                req.session.refreshToken = result.refreshToken
+            }
+            
             res.status(200).json(result)
         } catch(err) {
             res.status(500).json({ err: { message: err.message } })
@@ -38,12 +44,13 @@ userRouter.post("/login",
 )
 
 userRouter.post("/refreshtoken",
-    body("refreshToken").isLength({ min: 10 }),
-    doValidations,
+    // body("refreshToken").isLength({ min: 10 }), // nur wenn wir keine cookie-session verwenden, dann MUSS der refreshToken im body sein...
+    // doValidations,
     async (req, res) => {
+        console.log(req.session.refreshToken)
         try {
             const result = await UserService.refreshUserToken({
-                refreshToken: req.body.refreshToken,
+                refreshToken: req.session.refreshToken || req.body.refreshToken
             })
             res.status(200).json(result)
         } catch(err) {

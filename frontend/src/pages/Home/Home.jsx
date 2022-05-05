@@ -2,10 +2,29 @@ import '../App.css';
 import Navigation from "../../Components/Navigation";
 import PostList from '../../Components/PostList';
 import { Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { apiBaseUrl } from '../../api/api';
 
 const Home = (props) => {
-
-    console.log("DAS IST UNSER TOKEN:", props.token)
+    console.log("Das ist unser token:", props.token)
+    // temporär
+    useEffect(() => {
+        fetch(apiBaseUrl + "/api/users/refreshtoken", {
+            method: "POST",
+            mode: 'cors',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials: "include"
+        })
+        .then(response => response.json())
+        .then((data) => {
+            console.log(data)
+            if(data.token) {
+                props.setToken(data.token)
+            }
+        })
+    }, [props])
     
     if(!props.token) {
         return (<Navigate to="/" />)

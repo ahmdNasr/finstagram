@@ -24,7 +24,7 @@ function AppRoutes(){
             <Route path="/" element={<Login loginSuccess={loginSuccess} />} />
             <Route path="/signup" element={<Registration />} />
             <Route path="/verify-email" element={<VerifyEmail />} />
-            <Route path="/home" element={<Home token={token} />} />
+            <Route path="/home" element={<Home token={token} setToken={setToken} />} />
         </Routes>
     )
 }
