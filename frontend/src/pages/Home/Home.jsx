@@ -27,7 +27,7 @@ const Home = (props) => {
     return (
         <div className='bg-secondary'>
             <Navigation />
-            <div className="container mt-5 vh-100">
+            <div className="container mt-5 pb-5">
                 <div className="row">
                     <div className="col-lg-8 col-12">
                         <PostList posts={posts} />
