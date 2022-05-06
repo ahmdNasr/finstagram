@@ -22,10 +22,11 @@ const Home = (props) => {
                 setPosts(data)
             }
         })
-    }, [props])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
-        <div className='bg-secondary'>
+        <div>
             <Navigation />
             <div className="container mt-5 pb-5">
                 <div className="row">
