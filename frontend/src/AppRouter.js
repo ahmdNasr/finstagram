@@ -28,7 +28,7 @@ function AppRoutes(){
             <Route path="/home" 
                 element={
                     <AuthRequired token={token} setToken={setToken}>
-                        <Home />
+                        <Home token={token} />
                     </AuthRequired>
                 }
             />

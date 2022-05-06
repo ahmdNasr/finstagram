@@ -1,15 +1,36 @@
 import '../App.css';
 import Navigation from "../../Components/Navigation";
 import PostList from '../../Components/PostList';
+import { useEffect, useState } from 'react'
+import { apiBaseUrl } from '../../api/api';
 
-const Home = () => {
+const Home = (props) => {
+    const [posts, setPosts] = useState([])
+
+    useEffect(() => {
+        fetch(apiBaseUrl + "/api/posts/all", {
+            headers: {
+                "token": "JWT " + props.token
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            if(data.err) {
+                alert("Error loading posts: " + data.err)
+            } else {
+                setPosts(data)
+            }
+        })
+    }, [props])
+
     return (
         <div className='bg-secondary'>
             <Navigation />
             <div className="container mt-5 vh-100">
                 <div className="row">
                     <div className="col-8">
-                        <PostList />
+                        <PostList posts={posts} />
                     </div>
                     <div className="col-4"></div>
                 </div>

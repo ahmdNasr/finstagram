@@ -6,6 +6,7 @@ const { verifyUserEmail } = require("./verify-user-email")
 const { loginUser } = require("./login-user")
 const { refreshUserToken } = require("./refresh-user-token")
 const { addPost } = require("./add-post")
+const { listMainFeed } = require("./list-main-feed")
 
 const UserService = {
     registerUser,
@@ -16,7 +17,8 @@ const UserService = {
 }
 
 const PostService = {
-    addPost
+    addPost,
+    listMainFeed
 }
 
 module.exports = {

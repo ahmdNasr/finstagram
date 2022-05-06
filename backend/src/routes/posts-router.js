@@ -8,6 +8,15 @@ const { imageBufferToBase64 } = require("../utils/hash")
 const postsRouter = express.Router()
 const pictureUploadMiddleware = multer().single("picture")
 
+postsRouter.get("/all", doAuthMiddleware, async (_, res) => {
+    try {
+        const result = await PostService.listMainFeed()
+        res.status(200).json(result)
+    } catch (err) {
+        res.status(500).json({ err: { message: err.message } })
+    }
+})
+
 postsRouter.post("/add",
     doAuthMiddleware,
     pictureUploadMiddleware,
