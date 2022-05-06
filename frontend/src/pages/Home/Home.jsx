@@ -29,10 +29,10 @@ const Home = (props) => {
             <Navigation />
             <div className="container mt-5 vh-100">
                 <div className="row">
-                    <div className="col-8">
+                    <div className="col-lg-8 col-12">
                         <PostList posts={posts} />
                     </div>
-                    <div className="col-4"></div>
+                    <div className="col-4 d-none d-lg-block"></div>
                 </div>
             </div>
         </div>
