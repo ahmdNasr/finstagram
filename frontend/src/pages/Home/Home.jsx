@@ -8,7 +8,7 @@ const Home = (props) => {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        fetch(apiBaseUrl + "/api/posts/all", {
+        fetch(apiBaseUrl + "/api/posts/feed", {
             headers: {
                 "token": "JWT " + props.token
             }

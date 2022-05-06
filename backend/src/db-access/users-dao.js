@@ -7,6 +7,12 @@ async function findAllUsers() {
     return allUsers
 }
 
+async function findUsersByIdList(userIdList) {
+    const db = await getDB()
+    const foundUsersList = await db.collection("users").find( { _id: { $in: userIdList.map(id => new ObjectId(id)) } }).toArray()
+    return foundUsersList
+}
+
 async function findUserById(userId) {
     const db = await getDB()
     const foundUser = db.collection("users").findOne({ _id: new ObjectId(userId) })
@@ -44,6 +50,7 @@ async function updateUser(userId, updateInfo) {
 
 module.exports = {
     findAllUsers,
+    findUsersByIdList,
     findUserById,
     findUserByEmail,
     findUserByEmailOrUsername,
