@@ -47,7 +47,6 @@ userRouter.post("/refreshtoken",
     // body("refreshToken").isLength({ min: 10 }), // nur wenn wir keine cookie-session verwenden, dann MUSS der refreshToken im body sein...
     // doValidations,
     async (req, res) => {
-        console.log(req.session.refreshToken)
         try {
             const result = await UserService.refreshUserToken({
                 refreshToken: req.session.refreshToken || req.body.refreshToken
