@@ -5,9 +5,9 @@ const Post = (props) => {
         <div className="col">
             <div className="card shadow-sm">
             <div className="card-header">
-                <Link className="text-decoration-none d-flex gap-2 align-items-center"  to={"/user/" + props.post.postedBy.username}>
-                    <img className="border border-3 border-dark rounded-circle" src={props.post.postedBy.profilePicture} alt={"Avatar of " + props.post.postedBy.username} width={50} />
-                    <span className="fs-4 fw-bold">{props.post.postedBy.username}</span>
+                <Link className="text-decoration-none d-flex gap-2 align-items-center text-secondary"  to={"/user/" + props.post.postedBy.username}>
+                    <img className="border border-3 border-dark rounded-circle" src={props.post.postedBy.profilePicture} alt={"Avatar of " + props.post.postedBy.username} width={40} />
+                    <span className="fs-5 fw-bold">{props.post.postedBy.username}</span>
                 </Link>
             </div>
                 {/* <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> */}
