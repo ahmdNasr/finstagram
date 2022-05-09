@@ -1,6 +1,21 @@
 import { Link } from 'react-router-dom'
+import { apiBaseUrl } from '../api/api'
 
 const Post = (props) => {
+
+    const likePost = (event) => {
+        event.preventDefault()
+
+        fetch(apiBaseUrl + "/api/posts/like/" + props.post._id, {
+            method: "POST",
+            headers: {
+                token: "JWT " + props.token
+            }
+        })
+        .then(response => response.json())
+        .then(data => console.log("liked ..."))
+    }
+    
     return (
         <div className="col">
             <div className="card shadow-sm">
@@ -16,7 +31,7 @@ const Post = (props) => {
                     <p className="card-text">{props.post.description}</p>
                     <div className="d-flex justify-content-between align-items-center">
                         <div className="btn-group">
-                        <button type="button" className="btn btn-sm btn-outline-secondary">❤️ Like ({props.post.likes.length})</button>
+                        <button onClick={likePost} type="button" className="btn btn-sm btn-outline-secondary">❤️ Like ({props.post.likes.length})</button>
                         <button type="button" className="btn btn-sm btn-outline-secondary">💬 Comment ({props.post.comments.length})</button>
                         </div>
                         <small className="text-muted">{props.post.postedAt}</small>

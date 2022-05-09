@@ -33,7 +33,7 @@ const PostDetail = (props) => {
             error ?
             <h1 className="bg-danger text-white">{error}</h1>
             : post 
-            ? <Post post={post} />
+            ? <Post post={post} token={props.token} />
             : <h2 className="text-white">Loading post...</h2> }
         </DefaultPage>
     );

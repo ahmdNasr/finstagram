@@ -10,6 +10,7 @@ const { listMainFeed } = require("./list-main-feed")
 const { showPost } = require("./show-post")
 const { showUser } = require("./show-user")
 const { showProfileInfo } = require("./show-profile")
+const { likePost } = require("./like-post")
 
 const UserService = {
     registerUser,
@@ -24,7 +25,8 @@ const UserService = {
 const PostService = {
     addPost,
     listMainFeed,
-    showPost
+    showPost,
+    likePost,
 }
 
 module.exports = {

@@ -27,6 +27,17 @@ postsRouter.get("/:postId", doAuthMiddleware, async (req, res) => {
     }
 })
 
+postsRouter.post("/like/:postId", doAuthMiddleware, async (req, res) => {
+    try {
+        const postId = req.params.postId
+        const userId = req.userClaims.sub
+        const result = await PostService.likePost({ postId, userId })
+        res.status(200).json(result)
+    } catch (err) {
+        res.status(500).json({ err: { message: err.message } })
+    }
+})
+
 postsRouter.post("/add",
     doAuthMiddleware,
     pictureUploadMiddleware,

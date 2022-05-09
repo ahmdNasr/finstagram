@@ -25,9 +25,19 @@ async function insertPost(post) {
     return insertionResult
 }
 
+async function likePost(postId, userId) {
+    const db = await getDB()
+    const insertionResult = await db.collection("posts").updateOne(
+        { _id: new ObjectId(postId) },
+        { $push: { likes: userId } }
+    )
+    return insertionResult
+}
+
 module.exports = {
     findAllPosts,
     findAllPostsOfUser,
     findPostById,
-    insertPost
+    insertPost,
+    likePost
 }
