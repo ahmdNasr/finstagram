@@ -5,6 +5,7 @@ import AddPost from './pages/AddPost/AddPost'
 import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
 import PostDetail from './pages/PostDetail/PostDetail'
+import Profile from './pages/Profile/Profile'
 import Registration from './pages/Registration/Registration'
 import VerifyEmail from './pages/VerifyEmail/VerifyEmail'
 
@@ -45,6 +46,13 @@ function AppRoutes(){
                 element={
                     <AuthRequired token={token} setToken={setToken}>
                         <PostDetail token={token} />
+                    </AuthRequired>
+                }
+            />
+            <Route path="/user/:userId" 
+                element={
+                    <AuthRequired token={token} setToken={setToken}>
+                        <Profile token={token} />
                     </AuthRequired>
                 }
             />

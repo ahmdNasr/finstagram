@@ -25,6 +25,12 @@ async function findUserByEmail(userEmail) {
     return foundUser
 }
 
+async function findUserByUsername(username) {
+    const db = await getDB()
+    const foundUser = db.collection("users").findOne({ username })
+    return foundUser
+}
+
 async function findUserByEmailOrUsername(username, userEmail) {
     const db = await getDB()
     const foundUser = db.collection("users").findOne({
@@ -53,6 +59,7 @@ module.exports = {
     findUsersByIdList,
     findUserById,
     findUserByEmail,
+    findUserByUsername,
     findUserByEmailOrUsername,
     insertUser,
     updateUser

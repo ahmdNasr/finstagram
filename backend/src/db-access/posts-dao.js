@@ -7,6 +7,12 @@ async function findAllPosts() {
     return allPosts
 }
 
+async function findAllPostsOfUser(userId) {
+    const db = await getDB()
+    const allPosts = await db.collection("posts").find({ postedBy: userId }).toArray()
+    return allPosts
+}
+
 async function findPostById(postId) {
     const db = await getDB()
     const foundPost = await db.collection("posts").findOne({ _id: new ObjectId(postId) })
@@ -21,6 +27,7 @@ async function insertPost(post) {
 
 module.exports = {
     findAllPosts,
+    findAllPostsOfUser,
     findPostById,
     insertPost
 }

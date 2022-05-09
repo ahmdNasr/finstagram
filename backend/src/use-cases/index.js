@@ -8,13 +8,15 @@ const { refreshUserToken } = require("./refresh-user-token")
 const { addPost } = require("./add-post")
 const { listMainFeed } = require("./list-main-feed")
 const { showPost } = require("./show-post")
+const { showUser } = require("./show-user")
 
 const UserService = {
     registerUser,
     listAllUsers,
     verifyUserEmail,
     loginUser,
-    refreshUserToken
+    refreshUserToken,
+    showUser
 }
 
 const PostService = {

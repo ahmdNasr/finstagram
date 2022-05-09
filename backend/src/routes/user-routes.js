@@ -20,6 +20,17 @@ userRouter.get("/all", doAuthMiddleware, async (_, res) => {
     }
 })
 
+userRouter.get("/:username", doAuthMiddleware, async (req, res) => {
+    try {
+        const username = req.params.username
+        const allUsers = await UserService.showUser({ username })
+        res.status(200).json(allUsers)
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ err: { message: err.message } })
+    }
+})
+
 userRouter.post("/login",
     body("username").isLength({ min: 1 }),
     body("password").isStrongPassword(),
