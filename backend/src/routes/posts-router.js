@@ -17,6 +17,16 @@ postsRouter.get("/feed", doAuthMiddleware, async (_, res) => {
     }
 })
 
+postsRouter.get("/:postId", doAuthMiddleware, async (req, res) => {
+    try {
+        const postId = req.params.postId
+        const result = await PostService.showPost({ postId })
+        res.status(200).json(result)
+    } catch (err) {
+        res.status(500).json({ err: { message: err.message } })
+    }
+})
+
 postsRouter.post("/add",
     doAuthMiddleware,
     pictureUploadMiddleware,

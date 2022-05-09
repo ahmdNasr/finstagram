@@ -1,8 +1,8 @@
 import '../App.css';
-import Navigation from "../../Components/Navigation";
 import PostList from '../../Components/PostList';
 import { useEffect, useState } from 'react'
 import { apiBaseUrl } from '../../api/api';
+import DefaultPage from '../../Components/DefaultPage';
 
 const Home = (props) => {
     const [posts, setPosts] = useState([])
@@ -26,17 +26,11 @@ const Home = (props) => {
     }, [])
 
     return (
-        <div>
-            <Navigation />
-            <div className="container mt-5 pb-5">
-                <div className="row">
-                    <div className="col-lg-8 col-12">
-                        <PostList posts={posts} />
-                    </div>
-                    <div className="col-4 d-none d-lg-block"></div>
-                </div>
-            </div>
-        </div>
+        <DefaultPage>
+            {/* von DefaultPage die children... */}
+            <h1>Main Finstagram Feed:</h1>
+            <PostList posts={posts} />
+        </DefaultPage>
     );
 }
  

@@ -7,6 +7,7 @@ const { loginUser } = require("./login-user")
 const { refreshUserToken } = require("./refresh-user-token")
 const { addPost } = require("./add-post")
 const { listMainFeed } = require("./list-main-feed")
+const { showPost } = require("./show-post")
 
 const UserService = {
     registerUser,
@@ -18,7 +19,8 @@ const UserService = {
 
 const PostService = {
     addPost,
-    listMainFeed
+    listMainFeed,
+    showPost
 }
 
 module.exports = {
