@@ -28,7 +28,7 @@ const PostDetail = (props) => {
     }, [props.token, postId])
 
     return (
-        <DefaultPage>
+        <DefaultPage token={props.token}>
             {
             error ?
             <h1 className="bg-danger text-white">{error}</h1>

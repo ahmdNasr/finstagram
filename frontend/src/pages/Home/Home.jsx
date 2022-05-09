@@ -26,7 +26,7 @@ const Home = (props) => {
     }, [])
 
     return (
-        <DefaultPage>
+        <DefaultPage token={props.token}>
             {/* von DefaultPage die children... */}
             <h1>Main Finstagram Feed:</h1>
             <PostList posts={posts} />

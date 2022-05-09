@@ -3,7 +3,7 @@ import AddPostForm from "./AddPostForm";
 
 const AddPost = (props) => {
     return ( 
-        <DefaultPage>
+        <DefaultPage token={props.token}>
             <h1>Add new Post to your Finstagram Community</h1>
             <AddPostForm token={props.token} />
         </DefaultPage>

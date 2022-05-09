@@ -20,7 +20,18 @@ userRouter.get("/all", doAuthMiddleware, async (_, res) => {
     }
 })
 
-userRouter.get("/:username", doAuthMiddleware, async (req, res) => {
+userRouter.get("/myProfileInfo", doAuthMiddleware, async (req, res) => {
+    try {
+        const userId = req.userClaims.sub // an den token wird erkannt, um welchen user es sich handelt...
+        const allUsers = await UserService.showProfileInfo({ userId })
+        res.status(200).json(allUsers)
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ err: { message: err.message } })
+    }
+})
+
+userRouter.get("/profile/:username", doAuthMiddleware, async (req, res) => {
     try {
         const username = req.params.username
         const allUsers = await UserService.showUser({ username })

@@ -10,7 +10,7 @@ const Profile = (props) => {
     const [error, setError] = useState("")
 
     useEffect(() => {
-        fetch(apiBaseUrl + "/api/users/" + userId, {
+        fetch(apiBaseUrl + "/api/users/profile/" + userId, {
             headers: {
                 token: "JWT " + props.token
             }
@@ -28,7 +28,7 @@ const Profile = (props) => {
     }, [userId, props.token])
 
     return ( 
-        <DefaultPage>
+        <DefaultPage token={props.token}>
             {
             error 
                 ? <h2 className="bg-danger text-white">{error}</h2>

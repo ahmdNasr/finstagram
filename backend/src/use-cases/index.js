@@ -9,6 +9,7 @@ const { addPost } = require("./add-post")
 const { listMainFeed } = require("./list-main-feed")
 const { showPost } = require("./show-post")
 const { showUser } = require("./show-user")
+const { showProfileInfo } = require("./show-profile")
 
 const UserService = {
     registerUser,
@@ -16,7 +17,8 @@ const UserService = {
     verifyUserEmail,
     loginUser,
     refreshUserToken,
-    showUser
+    showUser,
+    showProfileInfo,
 }
 
 const PostService = {

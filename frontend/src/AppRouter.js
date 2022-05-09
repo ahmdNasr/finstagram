@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
 import AuthRequired from './Components/AuthRequired'
+import { useProfileInfo } from './hooks/useProfileInfo'
 import AddPost from './pages/AddPost/AddPost'
 import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
@@ -11,12 +12,14 @@ import VerifyEmail from './pages/VerifyEmail/VerifyEmail'
 
 function AppRoutes(){
     const [token, setToken] = useState(null)
+    
     const navigate = useNavigate()
     
     const loginSuccess = (token) => {
         setToken(token)
         navigate("/home")
     }
+
 
     // const logout = (token) => {
     //     setToken(null)
