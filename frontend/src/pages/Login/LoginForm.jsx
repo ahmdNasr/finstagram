@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { apiBaseUrl } from "../../api/api";
 
 const LoginForm = (props) => {
-  const [username, setUsername] = useState("WaldiTea")
-  const [password, setPassword] = useState("Brille123!")
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
 
   const [error, setError] = useState("")
   const loginUser = (event) => {
