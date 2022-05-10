@@ -13,7 +13,7 @@ postsRouter.get("/feed", doAuthMiddleware, async (_, res) => {
         const result = await PostService.listMainFeed()
         res.status(200).json(result)
     } catch (err) {
-        res.status(500).json({ err: { message: err.message } })
+        res.status(500).json({ err: { message: err ? err.message : "Unknown error while loading feed." } })
     }
 })
 
@@ -23,7 +23,7 @@ postsRouter.get("/:postId", doAuthMiddleware, async (req, res) => {
         const result = await PostService.showPost({ postId })
         res.status(200).json(result)
     } catch (err) {
-        res.status(500).json({ err: { message: err.message } })
+        res.status(500).json({ err: { message: err ? err.message : "Unknown error while loading post." } })
     }
 })
 
@@ -34,7 +34,7 @@ postsRouter.post("/like/:postId", doAuthMiddleware, async (req, res) => {
         const result = await PostService.likePost({ postId, userId })
         res.status(200).json(result)
     } catch (err) {
-        res.status(500).json({ err: { message: err.message } })
+        res.status(500).json({ err: { message: err ? err.message : "Unknown error while liking post." } })
     }
 })
 
@@ -52,7 +52,7 @@ postsRouter.post("/add",
 
             res.status(201).json(result)
         } catch (err) {
-            res.status(500).json({ err: { message: err.message } })
+            res.status(500).json({ err: { message: err ? err.message : "Unknown error while adding a new post." } })
         }
     }
 )

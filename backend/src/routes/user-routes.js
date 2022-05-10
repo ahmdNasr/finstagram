@@ -16,7 +16,7 @@ userRouter.get("/all", doAuthMiddleware, async (_, res) => {
         res.status(200).json(allUsers)
     } catch (err) {
         console.log(err)
-        res.status(500).json({ err: { message: err.message } })
+        res.status(500).json({ err: { message: err ? err.message : "Unknown error while loading all users." } })
     }
 })
 
@@ -27,7 +27,7 @@ userRouter.get("/myProfileInfo", doAuthMiddleware, async (req, res) => {
         res.status(200).json(allUsers)
     } catch (err) {
         console.log(err)
-        res.status(500).json({ err: { message: err.message } })
+        res.status(500).json({ err: { message: err ? err.message : "Unknown error while loading your profile." } })
     }
 })
 
@@ -38,7 +38,7 @@ userRouter.get("/profile/:username", doAuthMiddleware, async (req, res) => {
         res.status(200).json(allUsers)
     } catch (err) {
         console.log(err)
-        res.status(500).json({ err: { message: err.message } })
+        res.status(500).json({ err: { message: err ? err.message : "Unknown error while loading profile." } })
     }
 })
 
@@ -60,7 +60,7 @@ userRouter.post("/login",
             
             res.status(200).json(result)
         } catch(err) {
-            res.status(500).json({ err: { message: err.message } })
+            res.status(500).json({ err: { message: err ? err.message : "Unknown error while logging in." } })
         }
     }
 )
@@ -75,7 +75,7 @@ userRouter.post("/refreshtoken",
             })
             res.status(200).json(result)
         } catch(err) {
-            res.status(500).json({ err: { message: err.message } })
+            res.status(500).json({ err: { message: err ? err.message : "Unknown error while refreshing your token." } })
         }
     }
 )
@@ -94,7 +94,7 @@ userRouter.post("/register",
             res.status(201).json(result) // 201 ==> 'Created'
         } catch (err) {
             console.log(err)
-            res.status(500).json({ err: { message: err.message } })
+            res.status(500).json({ err: { message: err ? err.message : "Unknown error while registering a new account." } })
         }
     }
 )
@@ -113,7 +113,7 @@ userRouter.post("/verifyEmail",
             res.status(200).json(result)
         } catch (err) {
             console.log(err)
-            res.status(500).json({ err: { message: err.message } })
+            res.status(500).json({ err: { message: err ? err.message : "Unknown error while verifiying your email." } })
         }
     }
 )
